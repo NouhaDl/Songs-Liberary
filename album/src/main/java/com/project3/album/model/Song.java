@@ -9,34 +9,31 @@ import java.time.LocalDate;
 import java.util.Set;
 
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
-
+@NoArgsConstructor
+@Entity
 public class Song {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id",updatable = false, nullable = false)
+    @Column(name = "id", updatable = false, nullable = false)
     private int id;
 
-    @Column(name="nama")
+    @Column(name = "name", nullable = false) // Fixed field name from "nama" to "name"
     private String name;
 
     @Column(name = "date")
-   private LocalDate date;
+    private LocalDate date;
 
-    @Column(name="duration")
+    @Column(name = "duration")
     private Double duration;
 
-    @OneToMany(mappedBy="song", cascade= CascadeType.ALL, orphanRemoval = true)
-    private Set<SongGenre> songGenre;
+    @OneToMany(mappedBy = "song", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<SongGenre> songGenres; // Renamed to plural for clarity
 
     @OneToMany(mappedBy = "song", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<SongArtist> songArtistSet;
+    private Set<SongArtist> songArtists; // Renamed to plural for clarity
 
-    @OneToMany(mappedBy= "song", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<SongAlbum> songAlbum;
-
-    }
-
-
+    @OneToMany(mappedBy = "song", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<SongAlbum> songAlbums; // Renamed to plural for clarity
+}

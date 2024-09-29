@@ -8,20 +8,19 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-
+@Entity
 public class SongGenre {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id", updatable=false, nullable=false)
-    private  int id;
+    @Column(name = "id", updatable = false, nullable = false)
+    private int id;
 
-    @OneToMany
-    @JoinColumn(name="genre_id", nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "genre_id", nullable = false)
     private Genre genre;
 
-    @OneToMany
-    @JoinColumn (name="song_id", nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "song_id", nullable = false)
     private Song song;
-
 }

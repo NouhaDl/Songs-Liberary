@@ -8,11 +8,12 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Entity
 public class SongAlbum {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id", updatable = false, nullable = false)
+    @Column(name = "id", updatable = false, nullable = false)
     private int id;
 
     @ManyToOne
@@ -20,8 +21,6 @@ public class SongAlbum {
     private Album album;
 
     @ManyToOne
-    @JoinColumn(name="song_id", nullable = false)
+    @JoinColumn(name = "song_id", nullable = false)
     private Song song;
-
-
 }
